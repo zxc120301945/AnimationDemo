@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PeriscopeLayout">
+        <!--掉落类型(往上还是向下)-->
+        <attr name="is_fly_up_type" format="boolean"/>
+    </declare-styleable>
+</resources>

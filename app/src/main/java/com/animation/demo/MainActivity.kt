@@ -11,7 +11,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         click.setOnClickListener {
-            progress.setProgressData()
+//            progress.setProgressData()
+            heart_view.addHeart()
         }
     }
 }

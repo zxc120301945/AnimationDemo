@@ -29,7 +29,7 @@ class IconLightView(context: Context?, attrs: AttributeSet?) : ImageView(context
     //二元一次方程的偏移量
     private var b: Float = 0f
     //流光条的x宽度
-    private var xOff = 50f
+    private var xOff = 15f
 
     init {
         paint.isAntiAlias = true
@@ -37,11 +37,6 @@ class IconLightView(context: Context?, attrs: AttributeSet?) : ImageView(context
         paint.color = Color.parseColor("#000000")
         paint.style = Paint.Style.STROKE
     }
-
-    private val yTopOff = 13
-    private val xSlant = 35
-    private val ySlant = 19
-    private val length = 40
 
     private fun initPoint() {
         val point1 = Point(0, 0)
@@ -56,7 +51,7 @@ class IconLightView(context: Context?, attrs: AttributeSet?) : ImageView(context
         path.close()
 
         //计算出左边和右边的坐标
-        val leftCenterPoint = Point((point1.x + point2.x) / 2, (point1.y + point2.y) / 2)
+//        val leftCenterPoint = Point((point1.x + point2.x) / 2, (point1.y + point2.y) / 2)
 //        val rightCenterPoint = Point((point3.x + point4.x) / 2, (point3.y + point4.y) / 2)
 
         //计算斜率
@@ -64,27 +59,37 @@ class IconLightView(context: Context?, attrs: AttributeSet?) : ImageView(context
 //            k = (rightCenterPoint.y - leftCenterPoint.y) / (rightCenterPoint.x - leftCenterPoint.x).toFloat()
 //        }
         //计算偏移量
-        b = leftCenterPoint.y - k * leftCenterPoint.x
-
+//        b = leftCenterPoint.y - k * leftCenterPoint.x
+                    //xOff表示这个流光的高度
         xAnimator = ValueAnimator.ofFloat((point1.y + point2.y) / 2.toFloat() - xOff, (point3.y + point4.y) / 2.toFloat() + xOff)
         xAnimator?.let {
             it.interpolator = LinearInterpolator()
             it.duration = 5000
             it.addUpdateListener {
                 val tempX = it.animatedValue as Float
-                shape = LinearGradient(getYParams(tempX), tempX, getYParams(tempX + xOff), tempX+ xOff, colors, null, Shader.TileMode.CLAMP)
+                //设置流光的颜色
+                shape = LinearGradient(tempX, tempX, tempX, tempX+ xOff, colors, null, Shader.TileMode.CLAMP)
                 invalidate()
             }
+            //不停止播放动画
             it.repeatCount = -1
             it.start()
         }
+
+        //                shape = LinearGradient(getYParams(tempX), tempX, getYParams(tempX + xOff), tempX+ xOff, colors, null, Shader.TileMode.CLAMP)
+
     }
 
+    private val yTopOff = 13
+    private val xSlant = 35
+    private val ySlant = 19
+    private val length = 40
     private fun initPoints() {
-        //point是为了获取六边形图片的六个角对应的x和y轴，中间加上的固定像素应该是UI给定的数值
+        //point是为了获取六边形图片的六个角对应的x和y轴，中间加上的固定像素是UI给定的数值
         //前三个角是从中心顶部的角开始往右算
         //这是第一个角，六边形中心顶部
-        val point1 = Point(measuredWidth / 2, dip(yTopOff))//得到坐标X = 图片一半的位置，Y=固定从图片顶部0Y轴位置加上固定的13dp的点，下面以此类推，这个不适用于其他流光控件，需要重新计算x y坐标
+        val point1 = Point(measuredWidth / 2, dip(yTopOff))//得到坐标X = 图片一半的位置，Y=固定从图片顶部0Y轴位置加上固定的13dp的点，
+        // 下面以此类推，这个不适用于其他流光控件，需要重新计算x y坐标
         //六边形中心顶部往右数第一个
         val point2 = Point(measuredWidth / 2 + dip(xSlant), dip(yTopOff + ySlant))//
         //六边形中心顶部往右数第二个

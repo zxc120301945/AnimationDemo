@@ -1,7 +1,7 @@
 package com.animation.demo
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -11,8 +11,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         click.setOnClickListener {
-//            progress.setProgressData()
-            heart_view.addHeart()
+            //            progress.setProgressData()
+//            heart_view.addHeart()
+//            flDemo.doAnimator()
         }
     }
 }

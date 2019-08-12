@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ivBgCard"
+        android:layout_width="90dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/kiwi"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivCard"
+        android:layout_width="90dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/donut"
+        app:layout_constraintLeft_toLeftOf="@+id/ivBgCard"
+        app:layout_constraintRight_toRightOf="@+id/ivBgCard" />
+
+    <TextView
+        android:id="@+id/tvCard"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:maxEms="12"
+        android:text="牌底内容 -> 哈哈哈"
+        android:textColor="#ff0000"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBgCard"
+        app:layout_constraintLeft_toLeftOf="@+id/ivBgCard"
+        app:layout_constraintRight_toRightOf="@+id/ivBgCard"
+        app:layout_constraintTop_toTopOf="@+id/ivBgCard" />
+</merge>

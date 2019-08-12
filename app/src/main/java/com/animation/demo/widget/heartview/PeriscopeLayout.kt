@@ -1,4 +1,4 @@
-package com.animation.demo.heartview
+package com.animation.demo.widget.heartview
 
 import android.animation.*
 import android.content.Context

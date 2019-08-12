@@ -6,7 +6,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
 import android.util.LruCache
-import com.animation.demo.FileUtils
+import com.animation.demo.utils.FileUtils
 import com.opensource.svgaplayer.SVGAParser
 import com.opensource.svgaplayer.SVGAVideoEntity
 import io.reactivex.Observable

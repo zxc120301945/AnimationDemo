@@ -1,4 +1,4 @@
-package com.animation.demo
+package com.animation.demo.utils
 
 import android.content.Context
 import android.os.Environment
